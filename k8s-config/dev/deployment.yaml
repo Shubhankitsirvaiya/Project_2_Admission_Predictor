@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admission-predictor
+  labels:
+    app: admission-predictor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admission-predictor
+  template:
+    metadata:
+      labels:
+        app: admission-predictor
+    spec:
+      containers:
+      - name: admission-predictor
+        image: sirvaiys/admission-predictor:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
